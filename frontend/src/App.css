@@ -49,7 +49,7 @@ tr:nth-child(even) {
 }
 
 .contaner-form {
-  max-width: 15rem;
+  max-width: 20rem;
   margin: 100px auto;
   display: flex;
   border: 2px solid;
@@ -60,7 +60,8 @@ tr:nth-child(even) {
 .form {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  margin: 4rem;
+  
 }
 
 .form input,
