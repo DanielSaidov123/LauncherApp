@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useLauncherStore } from "../store/launcherStore"
 import { useNavigate } from "react-router-dom"
-import UpdateLauncher from "./UpdateLauncher"
+import UpdateLauncherComponents from "./UpdateLauncher"
 
 export default function AllLaunchers() {
   
@@ -55,7 +55,7 @@ export default function AllLaunchers() {
        </table>
        
     </div>
-     {editLauncher && <UpdateLauncher edit={editLauncher} setEdit={setEditLauncher}/> }
+     {editLauncher && <UpdateLauncherComponents edit={editLauncher} setEdit={setEditLauncher}/> }
 </>    
   )
 }

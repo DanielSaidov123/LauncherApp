@@ -1,9 +1,11 @@
 import { useLauncherStore } from "../store/launcherStore"
 
-export default function UpdateLauncher({edit ,setEdit }) {
+export default function UpdateLauncherComponents({edit ,setEdit }) {
     const { loading ,error } = useLauncherStore()
 
     const {updateLauncher ,message} = useLauncherStore()
+
+ 
   return (
     <div className="contaner-form">
       <form onSubmit={()=>{updateLauncher(edit._id , edit)}} className="form">
@@ -24,7 +26,7 @@ export default function UpdateLauncher({edit ,setEdit }) {
           placeholder="latitude"
           value={edit.latitude}
           onChange={(e) =>
-            edit({ ...edit, latitude: e.target.value })
+            setEdit({ ...edit, latitude: e.target.value })
           }
         />
         <input

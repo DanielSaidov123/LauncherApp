@@ -93,22 +93,21 @@ select {
 }
 
 .delete{
-  background-color: rgb(211, 65, 65);
+  background-color: rgba(255, 0, 0, 0.692);
   border-radius: 10px;
 }
 
 .delete:hover{
-  background-color: rgb(252, 0, 0);
+  background-color: rgb(255, 0, 0);
 }
 
 .Details{
   border-radius: 10px;
-  background-color: rgb(224, 216, 216);
-  color: rgb(48, 48, 48);
+  background-color: rgba(3, 81, 226, 0.705);
 }
 
 .Details:hover{
-  background-color: rgb(179, 179, 189);
+  background-color: rgb(0, 0, 255);
 }
 
 .Fetah110{
@@ -125,4 +124,13 @@ select {
 
 .Kheibar{
   color: blueviolet;
+}
+
+.updata{
+    border-radius: 10px;
+  background-color: rgba(255, 166, 0, 0.582);
+}
+
+.updata:hover{
+  background-color: orange;
 }
