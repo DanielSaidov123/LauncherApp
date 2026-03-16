@@ -10,28 +10,69 @@ export default function AddLauncher() {
     latitude: "",
     longitude: "",
   });
-  const {addLaunchers ,loading , error}=useLauncherStore()
-  function hndelSubmit( e) {
-    e.preventDefault()
-    console.log(launcher)
-    addLaunchers(launcher)
+  const { addLaunchers, loading, error, message } = useLauncherStore();
+  function hndelSubmit(e) {
+    e.preventDefault();
+    console.log(launcher);
+    addLaunchers(launcher);
+    setLauncher({
+      name: "",
+      city: "",
+      rocketType: "Shahab3",
+      latitude: "",
+      longitude: "",
+    });
   }
   return (
-    <div>
-      <form onSubmit={hndelSubmit}>
-        <input type="text" placeholder="name" onChange={(e)=>setLauncher({...launcher , name:e.target.value})}/>
-        <input type="text" placeholder="city" onChange={(e)=>setLauncher({...launcher , city:e.target.value})}/>
-        <input type="number" placeholder="latitude" onChange={(e)=>setLauncher({...launcher , latitude:e.target.value})}/>
-        <input type="number" placeholder="longitude" onChange={(e)=>setLauncher({...launcher , longitude:e.target.value})}/>
-        <select name="rocketType" id="rocketType" onChange={(e)=>setLauncher({...launcher , rocketType:e.target.value})}>
+    <div className="contaner-form">
+      <form onSubmit={hndelSubmit} className="form">
+        <input
+          type="text"
+          placeholder="name"
+          value={launcher.name}
+          onChange={(e) => setLauncher({ ...launcher, name: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="city"
+          value={launcher.city}
+          onChange={(e) => setLauncher({ ...launcher, city: e.target.value })}
+        />
+        <input
+          type="number"
+          placeholder="latitude"
+          value={launcher.latitude}
+          onChange={(e) =>
+            setLauncher({ ...launcher, latitude: e.target.value })
+          }
+        />
+        <input
+          type="number"
+          placeholder="longitude"
+          value={launcher.longitude}
+          onChange={(e) =>
+            setLauncher({ ...launcher, longitude: e.target.value })
+          }
+        />
+        <select
+          name="rocketType"
+          id="rocketType"
+          value={launcher.rocketType}
+          onChange={(e) =>
+            setLauncher({ ...launcher, rocketType: e.target.value })
+          }
+        >
           <option value="Shahab3">Shahab3</option>
           <option value="Fetah110">Fetah110</option>
           <option value="Radwan">Radwan</option>
           <option value="Kheibar">Kheibar</option>
         </select>
-        <button type="submit">{loading?<p>loading...</p>:<p>create</p>}</button>
+        <button type="submit">
+          {loading ? <p>loading...</p> : <p>create</p>}
+        </button>
+        {message && <p className="message-true">launcher createed</p>}
+        {error && <p>{error}</p>}
       </form>
-      {error && <p>{error}</p>}
     </div>
   );
 }

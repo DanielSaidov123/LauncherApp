@@ -1,17 +1,82 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: rgb(210, 213, 216);
 }
 
-.contaner{
-  max-width: 30rem;
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  color: rgb(44, 44, 78);
+}
+.navbar button {
+  padding: 1rem;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: rgb(167, 168, 168);
+  transition: all 0.8 ease;
+}
+
+.navbar button:hover {
+  transform: translateY(-2px);
+  transition: all 0.8 ease;
+}
+
+.contaner {
+  max-width: 50rem;
   border: 2px solid;
-  margin:40px auto ;
+  margin: 40px auto;
+  border-radius: 10px;
 }
 
-.table{
-  padding: 10px;
+.table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
-.row{
-  margin: 2rem;
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.contaner-form {
+  max-width: 15rem;
+  margin: 100px auto;
+  display: flex;
+  border: 2px solid;
+  border-radius: 10px;
+  background-color: rgb(197, 197, 197);
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.form input ,select{
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 2px solid;
+
+
+}
+.form button {
+  width: 10rem;
+  margin-left: 1.5rem;
+  border-radius: 10px;
+}
+
+.message-true{
+  color: rgb(16, 172, 29);
+  margin-left: 2rem;
 }
