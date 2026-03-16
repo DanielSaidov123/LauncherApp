@@ -17,6 +17,7 @@ export default function AllLaunchers() {
             <tr className="row"> 
                 <th>id</th>
                 <th>name</th>
+                <th>city</th>
                 <th>rocketType</th>
                 <th>latitude</th>
                 <th>longitude</th>
@@ -28,6 +29,7 @@ export default function AllLaunchers() {
              <tr key={l._id} className="row">
                 <td>{l._id}</td>
                 <td>{l.name}</td>
+                <td>{l.city}</td>
                 <td>{l.rocketType}</td>
                 <td>{l.latitude}</td>
                 <td>{l.longitude}</td>

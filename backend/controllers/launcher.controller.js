@@ -18,7 +18,7 @@ export const createLaunchers = async (req, res) => {
     }
 
     if (!["Shahab3", "Fetah110", "Radwan", "Kheibar"].includes(rocketType)) {
-      return res.status(400).json({ message: "Invalid rocket Type" });
+      return res.status(401).json({ message: "Invalid rocket Type" });
     }
     const launcher = await Launcher.create({
       name,
