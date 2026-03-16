@@ -42,8 +42,8 @@ export default function AllLaunchers() {
                 <td>{l._id}</td>
                 <td>{l.city}</td>
                 <td>{l.rocketType}</td>
-                <td><button onClick={()=>navigate(`/launcher/${l._id}`)}>Details</button></td>
-                <td><button onClick={()=>deleteLauncher(l._id)}>Delete</button></td>
+                <td><button className="Details" onClick={()=>navigate(`/launcher/${l._id}`)}>Details</button></td>
+                <td><button className="delete" onClick={()=>deleteLauncher(l._id)}>Delete</button></td>
             </tr>
            ))}
         </tbody>

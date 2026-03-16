@@ -91,3 +91,22 @@ select {
 .color-continer {
   text-align: center;
 }
+
+.delete{
+  background-color: rgb(211, 65, 65);
+  border-radius: 10px;
+}
+
+.delete:hover{
+  background-color: rgb(252, 0, 0);
+}
+
+.Details{
+  border-radius: 10px;
+  background-color: rgb(224, 216, 216);
+  color: rgb(48, 48, 48);
+}
+
+.Details:hover{
+  background-color: rgb(97, 97, 112);
+}
