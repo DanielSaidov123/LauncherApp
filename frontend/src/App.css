@@ -135,3 +135,8 @@ select {
 .updata:hover{
   background-color: orange;
 }
+
+.continr-serch{
+  max-width: 20rem;
+  margin: 1rem auto;
+}

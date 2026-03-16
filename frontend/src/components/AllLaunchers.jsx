@@ -17,14 +17,17 @@ export default function AllLaunchers() {
     <>
         
     <div className="contaner">
-        <input type="text" placeholder="Serch By city" onChange={(e)=>setSerce(e.target.value)}/>
-        <select name="rocketType" id="rocketType" onChange={(e)=>setRocket(e.target.value)}>
-            <option value="">Rockets</option>
-            <option value="Shahab3">Shahab3</option>
-            <option value="Fetah110">Fetah110</option>
-            <option value="Radwan">Radwan</option>
-            <option value="Kheibar">Kheibar</option>
-        </select>
+        <div className="continr-serch">
+            <input type="text" placeholder="Serch By city" onChange={(e)=>setSerce(e.target.value)}/>
+            <select name="rocketType" id="rocketType" onChange={(e)=>setRocket(e.target.value)}>
+                <option value="">Rockets</option>
+                <option value="Shahab3">Shahab3</option>
+                 <option value="Fetah110">Fetah110</option>
+                <option value="Radwan">Radwan</option>
+                <option value="Kheibar">Kheibar</option>
+            </select>
+        </div>
+      
         {loading && <p>loading...</p>}
         {error && <p>{error}</p>}
        <table className="table">
