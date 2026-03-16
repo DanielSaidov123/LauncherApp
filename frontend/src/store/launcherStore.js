@@ -10,7 +10,7 @@ export const useLauncherStore = create((set, get) => ({
   rocketFilter: "",
   getLaunchers: async () => {
     try {
-      set({ loading: true });
+      set({ loading: true ,error:null});
       const res = await getLaunchersAPI();
 
       set({ launchers: res.data, loading: false });
@@ -21,7 +21,7 @@ export const useLauncherStore = create((set, get) => ({
 
   addLaunchers: async (data) => {
     try {
-      set({ loading: true });
+      set({ loading: true ,error:null});
       const res = await createLaunchersAPI(data);
       console.log(res);
       set({ message: true });
@@ -34,7 +34,7 @@ export const useLauncherStore = create((set, get) => ({
 
   deleteLauncher:async (id)=>{
     try {
-        set({loading:true})
+        set({loading:true , error : null})
         await DeleteLaunchersByIdAPI(id)
         set({launchers :get().launchers.filter((l)=>l._id !==id)})
         set({loading : false})

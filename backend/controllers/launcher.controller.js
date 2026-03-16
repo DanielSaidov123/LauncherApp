@@ -20,6 +20,11 @@ export const createLaunchers = async (req, res) => {
     if (!["Shahab3", "Fetah110", "Radwan", "Kheibar"].includes(rocketType)) {
       return res.status(401).json({ message: "Invalid rocket Type" });
     }
+    console.log(+latitude,longitude);
+    if (+latitude<0 ||  +longitude<0) {
+      returnres.status(401).json({message : "Must be positive"})
+    }
+    
     const launcher = await Launcher.create({
       name,
       rocketType,
