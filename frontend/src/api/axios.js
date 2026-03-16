@@ -4,4 +4,4 @@ const API = axios.create({
   baseURL: "http://localhost:8000/api/",
 });
 
-export const getLaunchers = () => API.get("/launchers");
+export const getLaunchersAPI = () => API.get("/launchers");
