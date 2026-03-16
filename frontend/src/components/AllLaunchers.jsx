@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 export default function AllLaunchers() {
   
-    const {getLaunchers ,loading ,error ,filterLaunchers ,setSerce,setRocket} = useLauncherStore()
+    const {getLaunchers ,loading ,error ,filterLaunchers ,setSerce,setRocket,deleteLauncher} = useLauncherStore()
     const navigate = useNavigate()
     
     
@@ -32,6 +32,7 @@ export default function AllLaunchers() {
                 <th>city</th>
                 <th>rocketType</th>
                 <th>Details</th>
+                <th>Delete</th>
             </tr>
         </thead>
 
@@ -42,6 +43,7 @@ export default function AllLaunchers() {
                 <td>{l.city}</td>
                 <td>{l.rocketType}</td>
                 <td><button onClick={()=>navigate(`/launcher/${l._id}`)}>Details</button></td>
+                <td><button onClick={()=>deleteLauncher(l._id)}>Delete</button></td>
             </tr>
            ))}
         </tbody>

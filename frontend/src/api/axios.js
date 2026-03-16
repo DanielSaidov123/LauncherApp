@@ -10,3 +10,5 @@ export const getLaunchersAPI = () => API.get("/launchers");
 export const createLaunchersAPI = (data) => API.post("/launchers" , data);
 
 export const getLaunchersByIdAPI = (id) => API.get(`/launchers/${id}`);
+
+export const DeleteLaunchersByIdAPI = (id) => API.delete(`/launchers/${id}`);

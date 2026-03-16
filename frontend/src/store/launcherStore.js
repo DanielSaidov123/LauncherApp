@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { createLaunchersAPI, getLaunchersAPI } from "../api/axios";
+import { createLaunchersAPI, DeleteLaunchersByIdAPI, getLaunchersAPI } from "../api/axios";
 
 export const useLauncherStore = create((set, get) => ({
   launchers: [],
@@ -30,6 +30,19 @@ export const useLauncherStore = create((set, get) => ({
     } catch (error) {
       set({ error: error.message, loading: false });
     }
+  },
+
+  deleteLauncher:async (id)=>{
+    try {
+        set({loading:true})
+        await DeleteLaunchersByIdAPI(id)
+        set({launchers :get().launchers.filter((l)=>l._id !==id)})
+        set({loading : false})
+    } catch (error) {
+      set({ error: error.message, loading: false });
+        
+    }
+
   },
    setRocket: (value) => {
     set({ rocketFilter: value });
