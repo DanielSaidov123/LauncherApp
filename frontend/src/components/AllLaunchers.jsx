@@ -41,7 +41,7 @@ export default function AllLaunchers() {
              <tr key={l._id} className="row">
                 <td>{l._id}</td>
                 <td>{l.city}</td>
-                <td>{l.rocketType}</td>
+                <td className={`${l.rocketType}`}>{l.rocketType}</td>
                 <td><button className="Details" onClick={()=>navigate(`/launcher/${l._id}`)}>Details</button></td>
                 <td><button className="delete" onClick={()=>deleteLauncher(l._id)}>Delete</button></td>
             </tr>
