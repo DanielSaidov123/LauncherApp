@@ -1,10 +1,11 @@
 import { useEffect } from "react"
 import { useLauncherStore } from "../store/launcherStore"
+import { useNavigate } from "react-router-dom"
 
 export default function AllLaunchers() {
   
     const {launchers ,getLaunchers ,loading ,error} = useLauncherStore()
-
+    const navigate = useNavigate()
     useEffect(()=>{
         getLaunchers()
     },[getLaunchers])
@@ -33,6 +34,7 @@ export default function AllLaunchers() {
                 <td>{l.rocketType}</td>
                 <td>{l.latitude}</td>
                 <td>{l.longitude}</td>
+                <td><button onClick={()=>navigate(`/launcher/${l._id}`)}>Details</button></td>
             </tr>
            ))}
         </tbody>
