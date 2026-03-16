@@ -1,18 +1,20 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useLauncherStore } from "../store/launcherStore"
 import { useNavigate } from "react-router-dom"
+import UpdateLauncher from "./UpdateLauncher"
 
 export default function AllLaunchers() {
   
-    const {getLaunchers ,loading ,error ,filterLaunchers ,setSerce,setRocket,deleteLauncher} = useLauncherStore()
+    const {getLaunchers ,loading ,error ,filterLaunchers ,setSerce,setRocket,deleteLauncher } = useLauncherStore()
+    const [editLauncher ,setEditLauncher] = useState(null)
     const navigate = useNavigate()
-    
-    
+    console.log(editLauncher)
+  
     useEffect(()=>{
         getLaunchers()
     },[getLaunchers])
     return (
-    
+    <>
         
     <div className="contaner">
         <input type="text" placeholder="Serch By city" onChange={(e)=>setSerce(e.target.value)}/>
@@ -33,6 +35,7 @@ export default function AllLaunchers() {
                 <th>rocketType</th>
                 <th>Details</th>
                 <th>Delete</th>
+                <th>update</th>
             </tr>
         </thead>
 
@@ -44,11 +47,15 @@ export default function AllLaunchers() {
                 <td className={`${l.rocketType}`}>{l.rocketType}</td>
                 <td><button className="Details" onClick={()=>navigate(`/launcher/${l._id}`)}>Details</button></td>
                 <td><button className="delete" onClick={()=>deleteLauncher(l._id)}>Delete</button></td>
+                <td><button className="updata" onClick={()=>setEditLauncher({_id:l._id ,name: l.name ,city: l.city,rocketType: l.rocketType ,latitude: l.latitude,longitude:l.longitude})}>update</button></td>
             </tr>
            ))}
         </tbody>
-
+          
        </table>
+       
     </div>
+     {editLauncher && <UpdateLauncher edit={editLauncher} setEdit={setEditLauncher}/> }
+</>    
   )
 }

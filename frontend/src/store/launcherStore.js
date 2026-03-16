@@ -30,7 +30,7 @@ export const useLauncherStore = create((set, get) => ({
       const res = await createLaunchersAPI(data);
       console.log(res);
       set({ message: true });
-      setTimeout(() => set({ message: false }), 5000);
+      setTimeout(() => set({ message: false }), 2000);
       set({ launchers: [...get().launchers, res.data], loading: false });
     } catch (error) {
       set({ error: error.message, loading: false });
