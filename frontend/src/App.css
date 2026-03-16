@@ -57,18 +57,17 @@ tr:nth-child(even) {
   background-color: rgb(197, 197, 197);
 }
 
-.form{
+.form {
   display: flex;
   flex-direction: column;
   margin: 1rem;
 }
 
-.form input ,select{
+.form input,
+select {
   margin: 0.5rem;
   padding: 0.5rem;
   border: 2px solid;
-
-
 }
 .form button {
   width: 10rem;
@@ -76,7 +75,19 @@ tr:nth-child(even) {
   border-radius: 10px;
 }
 
-.message-true{
+.message-true {
   color: rgb(16, 172, 29);
   margin-left: 2rem;
+}
+
+.conteiner-Launcher {
+  border: 2px solid;
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: rgb(188, 191, 194);
+  border-radius: 10px;
+}
+
+.color-continer {
+  text-align: center;
 }

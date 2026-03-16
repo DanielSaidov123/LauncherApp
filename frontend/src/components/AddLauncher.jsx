@@ -30,18 +30,21 @@ export default function AddLauncher() {
           type="text"
           placeholder="name"
           value={launcher.name}
+          required
           onChange={(e) => setLauncher({ ...launcher, name: e.target.value })}
         />
         <input
           type="text"
           placeholder="city"
           value={launcher.city}
+          required
           onChange={(e) => setLauncher({ ...launcher, city: e.target.value })}
         />
         <input
           type="number"
           placeholder="latitude"
           value={launcher.latitude}
+          required
           onChange={(e) =>
             setLauncher({ ...launcher, latitude: e.target.value })
           }
@@ -50,6 +53,7 @@ export default function AddLauncher() {
           type="number"
           placeholder="longitude"
           value={launcher.longitude}
+          required
           onChange={(e) =>
             setLauncher({ ...launcher, longitude: e.target.value })
           }
@@ -58,6 +62,7 @@ export default function AddLauncher() {
           name="rocketType"
           id="rocketType"
           value={launcher.rocketType}
+          required
           onChange={(e) =>
             setLauncher({ ...launcher, rocketType: e.target.value })
           }
