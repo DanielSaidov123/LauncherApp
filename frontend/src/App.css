@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.contaner{
+  max-width: 30rem;
+  border: 2px solid;
+  margin:40px auto ;
+}
+
+.table{
+  padding: 10px;
+}
+.row{
+  margin: 2rem;
+}
