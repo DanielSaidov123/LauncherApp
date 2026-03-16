@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv"
 import { connectToMongoDB } from "./DB/mongoDB.js";
+import launchers from "./routes/launcher.route.js"
 dotenv.config()
 const PORT = process.env.PORT
 
@@ -10,6 +11,7 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
+app.use("/api/launchers" ,launchers);
 
 
 
