@@ -3,10 +3,10 @@ import { useEffect } from "react";
 import { useAuthStore } from "../store/authStote";
 
 export default function AllUsers() {
-  const { users, loading, error, getLaunchers } = useAuthStore();
+  const { users, loading, error, getAllusers } = useAuthStore();
   useEffect(() => {
-    getLaunchers();
-  }, [getLaunchers]);
+    getAllusers();
+  }, [getAllusers]);
 
   return (
     <div>

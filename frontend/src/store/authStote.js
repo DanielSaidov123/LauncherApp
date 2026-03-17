@@ -1,17 +1,17 @@
 import { create } from "zustand";
-import { getAllUsersAPI, loginAPI } from "../api/axios";
+import { getAllUsersAPI, loginAPI, rgisterAPI } from "../api/axios";
 import { persist } from "zustand/middleware";
 
 export const useAuthStore = create()(
   persist(
-    (set) => ({
+    (set, get) => ({
       users: [],
       loading: false,
       error: null,
       message: false,
       user: null,
 
-      getLaunchers: async () => {
+      getAllusers: async () => {
         try {
           set({ loading: true, error: null });
           const res = await getAllUsersAPI();
@@ -32,9 +32,18 @@ export const useAuthStore = create()(
           set({ error: error.message, loading: false });
         }
       },
+      rgisterUser: async (data) => {
+        try {
+          set({ loading: true, error: null });
+          const res = await rgisterAPI(data);
+          set({ message: true });
+          setTimeout(() => set({ message: false }), 2000);
+          set({ users: [...get().users, res.data], loading: false });
+        } catch (error) {
+          set({ error: error.message, loading: false });
+        }
+      },
     }),
-    { name: "auth" ,
-        partialize : (state)=>({user : state.user})
-    }
+    { name: "auth", partialize: (state) => ({ user: state.user }) },
   ),
 );
