@@ -15,7 +15,7 @@ export const ProtectedRoute = ({ allowedRols }) => {
 
 
   if (!hasAccess) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/Home" replace />;
   }
 
   return <Outlet />;

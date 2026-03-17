@@ -15,8 +15,8 @@ export default function Login() {
     console.log(login);
     loginUser(login);
     if (!error) {
-
-        navigate("/Home");
+        setTimeout(()=>  navigate("/Home"),1000)
+      
     }
   }
   return (

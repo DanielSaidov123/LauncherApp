@@ -21,9 +21,11 @@ export default function Navbar() {
         {user && (
           <>
             <button onClick={showInfo}>Who Am I?</button>
-            <button onClick={() => navigate("/AddLauncher")}>Add Launcher</button>
             <button onClick={() => { logout()  }}>Logout</button>
-            
+            {(user.user?.user_type === "admin" || user.user?.user_type === "intel"  )&& (
+                          <button onClick={() => navigate("/AddLauncher")}>Add Launcher</button>
+
+            )}
             {user.user?.user_type === "admin" && (
               <button onClick={() => navigate("/allusers")}>All users</button>
             )}

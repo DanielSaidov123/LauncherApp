@@ -72,7 +72,7 @@ export const DeleteLauncherByID = async (req, res) => {
 
 export const updateLauncher = async (req, res) => {
   try {
-    const { name, rocketType, latitude, longitude, city } = req.body;
+    const { name, rocketType, latitude, longitude, city, destroyed } = req.body;
 
     const launcher = await Launcher.findByIdAndUpdate(
       req.params.id,
@@ -82,10 +82,11 @@ export const updateLauncher = async (req, res) => {
         latitude,
         longitude,
         city,
+        destroyed,
       },
       { new: true },
     );
-    res.status(200).json(launcher)
+    res.status(200).json(launcher);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

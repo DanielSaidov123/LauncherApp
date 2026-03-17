@@ -36,6 +36,7 @@ export default function AllLaunchers() {
                 <th>id</th>
                 <th>city</th>
                 <th>rocketType</th>
+                <th>destroyed</th>
                 <th>Details</th>
                 <th>Delete</th>
                 <th>update</th>
@@ -48,9 +49,10 @@ export default function AllLaunchers() {
                 <td>{l._id}</td>
                 <td>{l.city}</td>
                 <td className={`${l.rocketType}`}>{l.rocketType}</td>
+                <td >{`${l.destroyed}`}</td>
                 <td><button className="Details" onClick={()=>navigate(`/launcher/${l._id}`)}>Details</button></td>
                 <td><button className="delete" onClick={()=>deleteLauncher(l._id)}>Delete</button></td>
-                <td><button className="updata" onClick={()=>setEditLauncher({_id:l._id ,name: l.name ,city: l.city,rocketType: l.rocketType ,latitude: l.latitude,longitude:l.longitude})}>update</button></td>
+                <td><button className="updata" onClick={()=>setEditLauncher({_id:l._id ,name: l.name ,city: l.city,rocketType: l.rocketType ,latitude: l.latitude,longitude:l.longitude ,destroyed:l.destroyed})}>update</button></td>
             </tr>
            ))}
         </tbody>
