@@ -26,7 +26,7 @@ export const useAuthStore = create()(
           set({ loading: true, error: null });
           const res = await loginAPI(data);
 
-          set({ user: res.data, loading: false });
+          set({ user: res.data, loading: false ,error:null });
         } catch (error) {
           set({ error: error.message, loading: false });
         }
@@ -37,7 +37,7 @@ export const useAuthStore = create()(
           const res = await rgisterAPI(data);
           set({ message: true });
           setTimeout(() => set({ message: false }), 2000);
-          set({ users: [...get().users, res.data], loading: false });
+          set({ users: [...get().users, res.data], loading: false , error : null});
         } catch (error) {
           set({ error: error.message, loading: false });
         }
@@ -47,7 +47,7 @@ export const useAuthStore = create()(
             set({ loading: true, error: null });
             await DeleteUserAPI(id);
             set({ users: get().users.filter((u) => u._id !== id) });
-            set({ loading: false });
+            set({ loading: false ,error : null});
           } catch (error) {
             set({ error: error.message, loading: false });
           }
@@ -59,7 +59,7 @@ export const useAuthStore = create()(
             set({
               users: get().users.filter((u) => (u._id !== id ? res.data : u)),
             });
-            set({ loading: false });
+            set({ loading: false ,error : null});
           } catch (error) {
             set({ error: error.message, loading: false });
           }

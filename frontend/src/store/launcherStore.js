@@ -32,7 +32,7 @@ export const useLauncherStore = create((set, get) => ({
       console.log(res);
       set({ message: true });
       setTimeout(() => set({ message: false }), 2000);
-      set({ launchers: [...get().launchers, res.data], loading: false });
+      set({ launchers: [...get().launchers, res.data], loading: false ,error:null});
     } catch (error) {
       set({ error: error.message, loading: false });
     }
@@ -43,7 +43,7 @@ export const useLauncherStore = create((set, get) => ({
       set({ loading: true, error: null });
       await DeleteLaunchersByIdAPI(id);
       set({ launchers: get().launchers.filter((l) => l._id !== id) });
-      set({ loading: false });
+      set({ loading: false  ,error:null});
     } catch (error) {
       set({ error: error.message, loading: false });
     }
@@ -55,7 +55,7 @@ export const useLauncherStore = create((set, get) => ({
       set({
         launchers: get().launchers.filter((l) => (l._id !== id ? res.data : l)),
       });
-      set({ loading: false });
+      set({ loading: false ,error:null});
     } catch (error) {
       set({ error: error.message, loading: false });
     }

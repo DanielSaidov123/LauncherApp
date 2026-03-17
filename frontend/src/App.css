@@ -149,3 +149,11 @@ select {
 .false{
   color: red;
 }
+
+.users{
+  text-align: center;
+}
+
+.Launchers{
+  text-align: center;
+}

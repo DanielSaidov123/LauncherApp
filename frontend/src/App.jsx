@@ -26,7 +26,6 @@ function App() {
           <Route path="/AddLauncher" element={<AddLauncherPage />} />
 
         </Route>
-
         <Route element={<ProtectedRoute allowedRols={["admin" ]} />}>
           <Route path="/allusers" element={<Users />} />
           <Route path="/rgister" element={<RegisterPages />} />
