@@ -9,6 +9,10 @@ const launcherSchema = new mongoose.Schema({
   city: String,
   longitude: Number,
   latitude: Number,
+  destroyed:{
+    type : Boolean,
+    default:false
+  }
 });
 
 export  const Launcher = mongoose.model("Launcher" , launcherSchema)

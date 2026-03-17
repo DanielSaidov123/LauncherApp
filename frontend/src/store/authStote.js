@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getAllUsersAPI, loginAPI, rgisterAPI } from "../api/axios";
+import { DeleteUserAPI, getAllUsersAPI, loginAPI, rgisterAPI , UpdateUserAPI } from "../api/axios";
 import { persist } from "zustand/middleware";
 
 export const useAuthStore = create()(
@@ -10,7 +10,6 @@ export const useAuthStore = create()(
       error: null,
       message: false,
       user: null,
-
       getAllusers: async () => {
         try {
           set({ loading: true, error: null });
@@ -43,6 +42,29 @@ export const useAuthStore = create()(
           set({ error: error.message, loading: false });
         }
       },
+       deleteUser: async (id) => {
+          try {
+            set({ loading: true, error: null });
+            await DeleteUserAPI(id);
+            set({ users: get().users.filter((u) => u._id !== id) });
+            set({ loading: false });
+          } catch (error) {
+            set({ error: error.message, loading: false });
+          }
+        },
+       updateUser: async (id, data) => {
+          try {
+            set({ loading: true, error: null });
+            const res = await UpdateUserAPI(id, data);
+            set({
+              users: get().users.filter((u) => (u._id !== id ? res.data : u)),
+            });
+            set({ loading: false });
+          } catch (error) {
+            set({ error: error.message, loading: false });
+          }
+        },
+        logout :()=> set({user : null})
     }),
     { name: "auth", partialize: (state) => ({ user: state.user }) },
   ),

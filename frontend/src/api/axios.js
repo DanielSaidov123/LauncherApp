@@ -21,3 +21,7 @@ export const getAllUsersAPI = () => API.get("/auth/getAllUsers");
 export const loginAPI = (data) => API.post("auth/login", data);
 
 export const rgisterAPI = (data) => API.post("auth/register/create", data);
+
+export const UpdateUserAPI = (id, data) => API.put(`auth/register/update/${id}`, data);
+
+export const DeleteUserAPI = (id) => API.delete(`auth/register/delete/${id}`);
