@@ -18,7 +18,7 @@ export const rgister = async (req, res) => {
     const hash = await bcrypt.hash(password, 10);
     const newUser = await User.create({
       username,
-      pasword: hash,
+      password: hash,
       email,
       user_type,
     });
@@ -40,7 +40,7 @@ export const login = async (req, res) => {
     if (!user) {
       return res.status(401).json({ message: "username is not found" });
     }
-    const passwordDeciphering = await bcrypt.compare(password, user.pasword);
+    const passwordDeciphering = await bcrypt.compare(password, user.password);
 
     if (!passwordDeciphering) {
       return res.status(400).json({ message: "password is not good" });
@@ -57,6 +57,76 @@ export const login = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     res.status(200).json({ message: "Login successful" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const upload = req.body;
+
+    if (upload.password) {
+      upload.password = await bcrypt.hash(upload.password, 10);
+    }
+    console.log(id);
+    const user = await User.findOneAndUpdate(
+      { _id: id },
+      {
+        username: upload.username,
+        password: upload.password,
+        email: upload.email,
+        user_type: upload.user_type,
+      },
+      { new: true },
+    );
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const user = await User.findOneAndDelete({ _id: id });
+
+    if (!user) {
+      return res.status(404).json({ message: "userisnot found" });
+    }
+    res.status(200).json({ message: "user deleted ", user });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getUser = async (req, res) => {
+  try {
+    console.log(req.user);
+    if (!req.user) {
+      return res.status(401).json({ message: "Not login in" });
+    }
+    const user = await User.findById(req.user.id).select("-password");
+
+    if (!user) {
+      return res.status(401).json({ message: "user is not found" });
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getAllUser = async (req, res) => {
+  try {
+    const users = await User.find();
+    
+
+    res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
