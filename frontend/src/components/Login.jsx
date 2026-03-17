@@ -1,0 +1,44 @@
+import React from "react";
+import { useAuthStore } from "../store/authStote";
+import { useState } from "react";
+
+export default function Login() {
+    const [login , setLogin]= useState({
+        username : "",
+        password:""
+    })
+  const { loginUser ,error,loading ,message } = useAuthStore();
+
+  function hndelSubmit(e) {
+    e.preventDefault()
+    console.log(login)
+    loginUser(login)
+  }
+  return (
+    <div>
+      <form
+        onSubmit={ hndelSubmit}
+        className="form"
+      >
+        <input
+          type="text"
+          placeholder="username"
+          value={login.username}
+          onChange={(e) => setLogin({ ...login, username: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="password"
+          value={login.password}
+          onChange={(e) => setLogin({ ...login, password: e.target.value })}
+        />
+        
+        <button type="submit">
+          {loading ? <p>loading...</p> : <p>Update</p>}
+        </button>
+        {message && <p className="message-true">login</p>}
+        {error && <p>{error}</p>}
+      </form>
+    </div>
+  );
+}
