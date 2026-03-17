@@ -16,6 +16,8 @@ export const DeleteLaunchersByIdAPI = (id) => API.delete(`/launchers/${id}`);
 export const UpdateLaunchersByIdAPI = (id, data) =>
   API.put(`/launchers/${id}`, data);
 
-export const getAllUsersAPI = () => API.get("/auth/getUser");
+export const getAllUsersAPI = () => API.get("/auth/getAllUsers");
 
 export const loginAPI = (data) => API.post("auth/login", data);
+
+export const rgisterAPI = (data) => API.post("auth/register/create", data);

@@ -6,6 +6,7 @@ import LauncherDetailsPage from './pages/LauncherDetailsPage'
 import Navbar from './components/Navbar'
 import Users from './pages/Users'
 import LoginPages from './pages/LoginPages'
+import RegisterPages from './pages/RegisterPages'
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route  path='/launcher/:id' element={<LauncherDetailsPage  />}/>
         <Route  path='/allusers' element={<Users  />}/>
         <Route  path='/Login' element={<LoginPages  />}/>
+        <Route  path='/rgister' element={<RegisterPages />}/>
        </Routes>
     </>
   )
