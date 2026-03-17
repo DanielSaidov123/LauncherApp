@@ -9,16 +9,14 @@ export const ProtectedRoute = ({ allowedRols }) => {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
 
-  const hasAccess = allowedRols.includes(user.user_type);
+  const userType = user?.user?.user_type  
+  
+  const hasAccess = allowedRols?.includes(userType);
+
 
   if (!hasAccess) {
-    if (user.user_type === "admin") {
-      return <Navigate to={"/HomeAdmin"} />;
-    } else if (user.user_type === "intel") {
-      return <Navigate to={"/HomeIntel"} />;
-    } else {
-      return <Navigate to={"/HomeAirforce"} />;
-    }
+    return <Navigate to="/" replace />;
   }
+
   return <Outlet />;
 };

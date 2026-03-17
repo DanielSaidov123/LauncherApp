@@ -19,7 +19,6 @@ export default function Register() {
     password: "",
     email: "",
     user_type: "intel",
-    last_login: "",
     });
   }
   return (
@@ -48,15 +47,7 @@ export default function Register() {
             setRegister({ ...rgister, email: e.target.value })
           }
         />
-        <input
-          type="text"
-          placeholder="last_login"
-          value={rgister.last_login}
-          required
-          onChange={(e) =>
-            setRegister({ ...rgister, last_login: e.target.value })
-          }
-        />
+        
         <select
           name="user_type"
           id="user_type"

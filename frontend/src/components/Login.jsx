@@ -1,25 +1,27 @@
 import React from "react";
 import { useAuthStore } from "../store/authStote";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-    const [login , setLogin]= useState({
-        username : "",
-        password:""
-    })
-  const { loginUser ,error,loading ,message } = useAuthStore();
-
+  const [login, setLogin] = useState({
+    username: "",
+    password: "",
+  });
+  const {  loginUser, error, loading, message } = useAuthStore();
+  const navigate = useNavigate();
   function hndelSubmit(e) {
-    e.preventDefault()
-    console.log(login)
-    loginUser(login)
+    e.preventDefault();
+    console.log(login);
+    loginUser(login);
+    if (!error) {
+
+        navigate("/Home");
+    }
   }
   return (
     <div>
-      <form
-        onSubmit={ hndelSubmit}
-        className="form"
-      >
+      <form onSubmit={hndelSubmit} className="form">
         <input
           type="text"
           placeholder="username"
@@ -32,7 +34,7 @@ export default function Login() {
           value={login.password}
           onChange={(e) => setLogin({ ...login, password: e.target.value })}
         />
-        
+
         <button type="submit">
           {loading ? <p>loading...</p> : <p>Update</p>}
         </button>
