@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema(
     },
     user_type: {
       type: String,
-      enum: ["intal", "airforce", "admin"],
+      enum: ["intel", "airforce", "admin"],
       require: true,
     },
     last_login: {
