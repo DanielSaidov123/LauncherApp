@@ -8,7 +8,7 @@ export default function UpdateLauncherComponents({ edit, setEdit }) {
 
   return (
     <>
-      {user.user.user_type === "admin" && (
+      {(user.user.user_type === "admin" || user.user.user_type === "intel") && (
         <div className="contaner-form">
           <form
             onSubmit={() => {

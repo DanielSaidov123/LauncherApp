@@ -13,6 +13,7 @@ export const useLauncherStore = create((set, get) => ({
   message: false,
   serch: "",
   rocketFilter: "",
+  DetailsFilter: "",
   getLaunchers: async () => {
     try {
       set({ loading: true, error: null });
@@ -65,13 +66,17 @@ export const useLauncherStore = create((set, get) => ({
   setSerce: (value) => {
     set({ serch: value });
   },
+  setDetails :(value)=>{
+    set ({DetailsFilter : value})
+  },
   filterLaunchers: () => {
-    const { launchers, serch, rocketFilter } = get();
+    const { launchers, serch, rocketFilter ,DetailsFilter} = get();
 
     return launchers.filter(
       (l) =>
         l.city.includes(serch) &&
-        (rocketFilter === "" || l.rocketType === rocketFilter),
+        (rocketFilter === "" || l.rocketType === rocketFilter) && 
+        (DetailsFilter === "" || `${l.destroyed}` === `${DetailsFilter}`),
     );
   },
 }));

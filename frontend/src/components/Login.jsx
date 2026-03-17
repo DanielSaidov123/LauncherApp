@@ -15,12 +15,11 @@ export default function Login() {
     console.log(login);
     loginUser(login);
     if (!error) {
-        setTimeout(()=>  navigate("/Home"),1000)
-      
+        setTimeout(()=>  navigate("/Home"),2000)
     }
   }
   return (
-    <div>
+    <div className="contaner-form">
       <form onSubmit={hndelSubmit} className="form">
         <input
           type="text"
@@ -36,7 +35,7 @@ export default function Login() {
         />
 
         <button type="submit">
-          {loading ? <p>loading...</p> : <p>Update</p>}
+          {loading ? <p>loading...</p> : <p>login</p>}
         </button>
         {message && <p className="message-true">login</p>}
         {error && <p>{error}</p>}

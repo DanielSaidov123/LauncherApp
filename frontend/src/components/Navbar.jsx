@@ -8,7 +8,7 @@ export default function Navbar() {
 
   const showInfo = () => {
     if (user) {
-      alert(`User: ${user.user?.username}  Role: ${user.user?.user_type}`);
+      alert(`User: ${user.user?.username}  user_type: ${user.user?.user_type}`);
     }
   };
 

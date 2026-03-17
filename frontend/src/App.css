@@ -137,6 +137,15 @@ select {
 }
 
 .continr-serch{
-  max-width: 20rem;
+  max-width: 25rem;
   margin: 1rem auto;
+}
+
+.true{
+   color: rgb(37, 168, 37);
+
+}
+
+.false{
+  color: red;
 }
