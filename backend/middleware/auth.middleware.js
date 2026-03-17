@@ -9,11 +9,11 @@ export const checkAuth = (role = []) => {
 
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
- 
+      req.user = decoded;
+
       if (!role.includes(decoded.user_type)) {
         return res.status(403).json({ message: "Access denied" });
       }
-
       next();
     } catch (error) {
       return res.status(401).json({ message: "Invalid token" });
