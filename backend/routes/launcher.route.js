@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get('/',checkAuth(["admin" ,"intel" ,"airforce"]),AllLaunchers)
 router.post('/' ,checkAuth(["admin" ,"intel"]),createLaunchers)
-router.put('/:id',checkAuth(["admin" ,"intel"]),updateLauncher)
+router.put('/:id',checkAuth(["admin" ,"intel","airforce"]),updateLauncher)
 router.get('/:id',checkAuth(["admin" ,"intel" ,"airforce"]),getLauncherByID)
 router.delete('/:id',checkAuth(["admin" ,"intel"]),DeleteLauncherByID)
 

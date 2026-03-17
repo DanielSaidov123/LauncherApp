@@ -36,12 +36,13 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "All fields are requierd" });
     }
     const user = await User.findOne({ username });
-
     if (!user) {
       return res.status(401).json({ message: "username is not found" });
     }
     const passwordDeciphering = await bcrypt.compare(password, user.password);
+    const last_login = new Date();
 
+    await User.findByIdAndUpdate(user._id, { $set: { last_login } });
     if (!passwordDeciphering) {
       return res.status(400).json({ message: "password is not good" });
     }
@@ -56,7 +57,7 @@ export const login = async (req, res) => {
       secure: false,
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
-    res.status(200).json({ message: "Login successful" });
+    res.status(200).json({ message: "Login successful", user });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -124,7 +125,6 @@ export const getUser = async (req, res) => {
 export const getAllUser = async (req, res) => {
   try {
     const users = await User.find();
-    
 
     res.status(200).json(users);
   } catch (error) {
